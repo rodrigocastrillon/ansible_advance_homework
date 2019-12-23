@@ -16,7 +16,6 @@
     msg: |
       name: "{{ item.value.name }}"
       state: "{{ item.value.state }}"
-      cloud: "{{ item.value.cloud }}"
       image: "{{ item.value.image }}"
       flavor: "{{ item.value.flavor }}"
       key_name: "{{ item.value.key_name }}"
