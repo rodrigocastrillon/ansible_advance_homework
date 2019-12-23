@@ -21,4 +21,4 @@
       flavor: "{{ item.value.flavor }}"
       key_name: "{{ item.value.key_name }}"
       security_groups: "{{ item.value.security_group }}"
-  loop: "{{ osp_servers }}"
+  loop: "{{ lookup('dict', osp_servers) }}"
