@@ -4,9 +4,10 @@
   # STUDENT NOTE: This is unneeded as I am working with pre-defined instances in Ansiblew configuration files.
   # This would avoid deletion of other machines running in the same cloud.
   
-  - name: Delete instances
-    os_server:
-      name: "{{ item.value.name }}"
-      state: absent
-      cloud: "{{ cloud }}"
-    loop: "{{ lookup('dict', osp_servers) }}" 
+- name: Delete instances
+  os_server:
+    name: "{{ item.value.name }}"
+    state: absent
+    delete_fip: true
+    cloud: "{{ cloud }}"
+  loop: "{{ lookup('dict', osp_servers) }}" 

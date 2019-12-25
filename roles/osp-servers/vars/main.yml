@@ -3,14 +3,13 @@
 cloud: ospcloud
 int_net: int_network
 ext_net: ext_network
-osp_keyname: homework_sshkey
-osp_keyfilename: openstack.pub
+key_name: ansible_ssh
+key_filename: openstack.pub
 
 osp_servers:
   frontend:
     name: frontend
     image: rhel-guest
-    key_name: ansible_ssh
     flavor: m2.small
     security_group: frontend
     meta:
@@ -19,7 +18,6 @@ osp_servers:
   app1:
     name: app1
     image: rhel-guest
-    key_name: ansible_ssh
     flavor: m2.small
     security_group: apps
     meta:
@@ -28,7 +26,6 @@ osp_servers:
   app2:
     name: app2
     image: rhel-guest
-    key_name: ansible_ssh
     flavor: m2.small
     security_group: apps
     meta:
@@ -37,7 +34,6 @@ osp_servers:
   db:
     name: db
     image: rhel-guest
-    key_name: ansible_ssh
     flavor: m2.small
     security_group: db
     meta:
