@@ -1,12 +1,18 @@
 ---
 
 # tasks file for osp.servers
+
+- name: Copy key to Workstation
+  copy:
+    src: "{{ osp_keyfilename }}"
+    dest: "/tmp/{{ osp_keyfilename }}"
+
 - name: Ensure OSP have proper SSH keys for instances
   os_keypair:
     cloud: "{{ cloud }}"
     state: present
     name: "{{ osp_keyname }}"
-    public_key_file: "{{ osp_keyfilename }}"
+    public_key_file: "/tmp/{{ osp_keyfilename }}"
 
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   include_tasks: create_osp_servers.yml

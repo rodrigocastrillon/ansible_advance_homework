@@ -16,5 +16,3 @@
     security_groups: "{{ item.value.security_group }}"
     state: present
     wait: true
-  loop: "{{ lookup('dict', osp_servers) }}"
-
