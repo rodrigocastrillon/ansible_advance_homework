@@ -4,8 +4,8 @@
 
 - name: Copy key to Workstation
   copy:
-    src: "{{ osp_keyfilename }}"
-    dest: "/tmp/{{ osp_keyfilename }}"
+    src: "{{ key_filename }}"
+    dest: "/tmp/{{ key_filename }}"
 
 - name: Ensure OSP have proper SSH keys for instances
   os_keypair:
