@@ -2,11 +2,11 @@
 
 # tasks file for osp.servers
 - name: Ensure OSP have proper SSH keys for instances
-  - os_keypair:
-      cloud: "{{ cloud }}"
-      state: present
-      name: "{{ osp_keyname }}"
-      public_key_file: "{{ osp_keyfilename }}"
+  os_keypair:
+    cloud: "{{ cloud }}"
+    state: present
+    name: "{{ osp_keyname }}"
+    public_key_file: "{{ osp_keyfilename }}"
 
 - name: Provision OSP instances
   block:
