@@ -11,8 +11,10 @@
 
   - name: Curl website
     uri:
-      url: "http://{{ openstack_info.ansible_facts.openstack_servers[0].public_v4 }}"
-      return_content: true
+      url: "http://{{item.public_v4}}"
+      return_content: yes
+    with_items:
+      - "{{ openstack_info.ansible_facts.openstack_servers }}"
     register: website_contents
     tags:
       - osp.smoke
