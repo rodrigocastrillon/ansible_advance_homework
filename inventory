@@ -4,3 +4,4 @@ workstation-9ac1.rhpds.opentlc.com
 [workstation:vars]
 ansible_ssh_private_key_file=/root/.ssh/openstack.pem
 ansible_user=cloud-user
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

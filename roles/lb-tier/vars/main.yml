@@ -1,2 +1,4 @@
 ---
 # vars file for lb-tier
+
+springboot_port: 8080
