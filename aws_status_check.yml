@@ -1,4 +1,6 @@
-- hosts: tag_instance_filter_three_tier_app_psrivast_redhat_com
+# I added the email as parameter in the Tower job template, to avoid
+# publishing the address in github
+- hosts: tag_instance_filter_three_tier_app_{{ param_email }}
   gather_facts: false
   tasks:
   - name: Check the instances status
