@@ -49,6 +49,6 @@
       args:
         chdir: /root
 
-    - name: Wait for mail
-      pause:
-        minutes: 15 
+    #- name: Wait for mail
+    #  pause:
+    #    minutes: 15 
