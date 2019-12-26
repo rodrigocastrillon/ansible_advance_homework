@@ -1,13 +1,12 @@
 ---
-- name: Copy key to Workstation
+- name: Copy additional key to Workstation
   copy:
     src: "{{ key_filename }}"
     dest: "/tmp/{{ key_filename }}"
 
-- name: Ensure OSP have proper SSH keys for instances
+- name: Ensure OSP have the secondary SSH key
   os_keypair:
     cloud: "{{ cloud }}"
     state: present
     name: "{{ key_name }}"
     public_key_file: "/tmp/{{ key_filename }}"
-

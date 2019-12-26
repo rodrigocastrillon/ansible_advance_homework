@@ -1,4 +1,16 @@
 ---
-- name: Placeholder
-  debug:
-    msg: "Placeholder"
+- name: Add floating IP to Servers
+  os_floating_ip:
+    server: "{{ item.value.name }}"
+    state: present
+    cloud: "{{ cloud }}"
+    network: "{{ ext_net }}"
+    reuse: true
+    wait: true
+  register: f_ip
+
+- name: Add instance to in-memory inventory
+  include_tasks: add_in_memory_inventory.yml
+
+- name: Wait instance to be online
+  include_tasks: wait_osp_servers.yml

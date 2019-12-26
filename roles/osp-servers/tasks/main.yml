@@ -2,17 +2,21 @@
 
 # tasks file for osp.servers
 
-- name: Manage keys
-  include_tasks: manage_keys.yml
-
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   include_tasks: create_osp_servers.yml
   loop: "{{ lookup('dict', osp_servers) }}"
  
 - name:  Add floating IP to Servers
   include_tasks: add_fip.yml
+  register: floating_ips
   loop: "{{ lookup('dict', osp_servers) }}"
 
-- name: Wait for server to be available
-  include_tasks: wait_osp_servers.yml
-  loop: "{{ lookup('dict', osp_servers) }}"
+- name: Show all the hosts in inventory
+  debug:
+    msg: "{{ item }}"
+    verbosity: 1
+  with_inventory_hostnames:
+    - all
+
+- name: Manage keys
+  include_tasks: manage_keys.yml

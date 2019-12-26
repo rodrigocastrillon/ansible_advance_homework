@@ -1,10 +1,21 @@
 ---
 # vars file for osp.servers
+osp_user: cloud-user
+osp_qa_inventory_group_name: osp_qa
+key_name: homework_sshkey
+key_filename: openstack.pub
+bootcamp_repository_url: http://www.opentlc.com/download/ansible_bootcamp
+
+## OPENSTACK VARS
 cloud: ospcloud
 int_net: int_network
 ext_net: ext_network
-key_name: homework_sshkey
-key_filename: openstack.pub
+userdata: |
+  #!/bin/bash
+  curl -o /tmp/openstack.pub {{ bootcamp_repository_url }}/openstack_keys/openstack.pub
+  cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+  curl -o /tmp/internal.repo {{ bootcamp_repository_url }}/repo/internal.repo
+  cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
 
 osp_servers:
   frontend:

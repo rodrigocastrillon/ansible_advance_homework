@@ -1,0 +1,6 @@
+---
+- name: Adding to in-memory inventory...
+  add_host:
+    name: "{{ f_ip.floating_ip.floating_ip_address }}"
+    groups: "{{ item.value.meta.group }}"
+    instance_name: "{{ item.value.name }}" 

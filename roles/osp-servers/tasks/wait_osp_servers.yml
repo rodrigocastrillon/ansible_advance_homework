@@ -1,4 +1,8 @@
 ---
-- name: Placeholder
-  debug:
-    msg: "Placeholder"
+- name: Wait for server to be available
+  wait_for:
+    host: "{{ f_ip.floating_ip.floating_ip_address }}"
+    port: 22
+    timeout: 600
+    search_regex: OpenSSH
+  delegate_to: "{{ inventory_hostname }}"

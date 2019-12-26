@@ -15,4 +15,5 @@
       - net-name: "{{ int_net }}"
     security_groups: "{{ item.value.security_group }}"
     state: present
+    userdata: "{{ userdata }}"
     wait: true
