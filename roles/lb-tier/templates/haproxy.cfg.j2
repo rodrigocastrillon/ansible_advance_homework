@@ -1,6 +1,7 @@
 global
-  log /dev/log  local0
-  log /dev/log  local1 notice
+  log global
+  option httplog
+  log 127.0.0.1:514  local0 
   stats socket /var/lib/haproxy/stats level admin
   chroot /var/lib/haproxy
   user haproxy
