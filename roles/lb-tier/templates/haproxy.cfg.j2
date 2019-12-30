@@ -9,20 +9,19 @@ global
 defaults
   log global
   mode  http
-  option httpchk GET /example/v1/items # With actuator it would be: /monitoring/health
-  http-check expect status 200         # http-check expect string UP
+  http-check expect status 200 
   option  httplog
   option  dontlognull
-        timeout connect 5000
-        timeout client 50000
-        timeout server 50000
+  timeout connect 5000
+  timeout client 50000
+  timeout server 50000
 
 frontend hafrontend
     bind *:80
     mode http
-    default_backend app-servers
+    default_backend app
 
-backend app-servers
+backend app
     mode http
     balance roundrobin
     option forwardfor
